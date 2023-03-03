@@ -2,15 +2,54 @@ package ru.netology.javaqa.javaqamvn.services;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class RadioTest {
     //station
 
     @Test
     public  void ShouldSetCurrentStation(){
         Radio radio = new Radio();
-        radio.setCurrentStation(5);
+        radio.setCurrentStation(1);
 
-        int expected = 5;
+        int expected = 1;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected,actual);
+    }
+    @Test
+    public  void ShouldSetCurrentStationIfZero(){
+        Radio radio = new Radio();
+        radio.setCurrentStation(0);
+
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected,actual);
+    }
+    @Test
+    public  void ShouldSetCurrentStationIfMinus(){
+        Radio radio = new Radio();
+        radio.setCurrentStation(-1);
+
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected,actual);
+    }
+    @Test
+    public  void ShouldSetCurrentStationIfAboveMax(){
+        Radio radio = new Radio();
+        radio.setCurrentStation(10);
+
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected,actual);
+    }
+    @Test
+    public  void ShouldSetCurrentStationIfMax(){
+        Radio radio = new Radio();
+        radio.setCurrentStation(9);
+
+        int expected = 9;
         int actual = radio.getCurrentStation();
         Assertions.assertEquals(expected,actual);
     }
@@ -69,13 +108,33 @@ public class RadioTest {
         Assertions.assertEquals(expected,actual);
     }
 
-
+//second constructor
     @Test
-    public  void test(){
-        Radio radio = new Radio(20);
-        radio.setCurrentStation(15);
+    public  void setCurrentStationSecondConstructor(){
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(9);
 
-        int expected = 15;
+        int expected = 9;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected,actual);
+    }
+    @Test
+    public  void ShouldSetNextStationSecondConstructor(){
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(9);
+        radio.nextStation();
+
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected,actual);
+    }
+    @Test
+    public  void ShouldSetPreviousStationSecondConstructor(){
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(0);
+        radio.previousStation();
+
+        int expected = 9;
         int actual = radio.getCurrentStation();
         Assertions.assertEquals(expected,actual);
     }
