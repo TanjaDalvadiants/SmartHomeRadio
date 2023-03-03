@@ -8,9 +8,9 @@ public class RadioTest {
     @Test
     public  void ShouldSetCurrentStation(){
         Radio radio = new Radio();
-        radio.setCurrentStation(5);
+        radio.setCurrentStation(6);
 
-        int expected = 5;
+        int expected = 6;
         int actual = radio.getCurrentStation();
         Assertions.assertEquals(expected,actual);
     }
