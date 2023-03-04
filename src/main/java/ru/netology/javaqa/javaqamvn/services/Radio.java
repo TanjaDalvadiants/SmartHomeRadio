@@ -1,88 +1,74 @@
 package ru.netology.javaqa.javaqamvn.services;
+public  class Radio {
 
-public class Radio {
-    public int currentStation;
+    private int currentStation;
+    private int currentVolume;
+    private int maxStation;
+    private int maxVolume;
 
-    public int getCurrentStation() {
+
+    public Radio (){
+        maxStation = 9;
+        maxVolume = 100;
+
+    }
+    public Radio (int stationsCount){
+        maxStation = stationsCount - 1;
+    }
+    //station
+    public int getCurrentStation(){
         return currentStation;
     }
 
-    ;
-
-    public void setNextCurrentStation(int newCurrentStation) {
-
-        if (newCurrentStation >= 9) {
-            newCurrentStation = 0;
+    public void setCurrentStation(int currentStation) {
+        if (currentStation < 0){
+            return;
         }
-        if (0 < newCurrentStation && newCurrentStation < 9) {
-            newCurrentStation = newCurrentStation + 1;
+        if (currentStation > maxStation){
+            return;
         }
-
-
-        currentStation = newCurrentStation;
+        this.currentStation = currentStation;
     }
-
-    public void setPrevCurrentStation(int newCurrentStation) {
-
-        if (newCurrentStation <= 0) {
-            newCurrentStation = 9;
+    public void nextStation(){
+        if (currentStation!=maxStation){
+            currentStation = currentStation+1;
+        } else {
+            currentStation = 0;
         }
-        if (0 < newCurrentStation && newCurrentStation < 9) {
-            newCurrentStation = newCurrentStation - 1;
+    }
+    public void previousStation(){
+        if (currentStation != 0){
+            currentStation = currentStation-1;
+        } else {
+            currentStation = maxStation;
         }
-
-
-        currentStation = newCurrentStation;
     }
-
-    public void setToMaxStation() {
-        currentStation = 9;
-    }
-
-    public void setToMinStation() {
-        currentStation = 0;
-    }
-
-    public int currentVolume;
-
-    public int getCurrentVolume() {
+    //volume
+    public int getCurrentVolume(){
         return currentVolume;
     }
 
-    ;
-
-    public void setMaxCurrentVolume(int newMaxCurrentVolume) {
-        if (newMaxCurrentVolume >= 10) {
-            newMaxCurrentVolume = 10;
+    public void setCurrentVolume(int currentVolume) {
+        if (currentVolume < 0) {
+            return;
         }
-        if (0 < newMaxCurrentVolume && newMaxCurrentVolume < 10) {
-            newMaxCurrentVolume = newMaxCurrentVolume + 1;
+        if (currentVolume > maxVolume) {
+            return;
         }
-
-
-        currentVolume = newMaxCurrentVolume;
-
+        this.currentVolume = currentVolume;
     }
-
-    public void setMinCurrentVolume(int newMinCurrentVolume) {
-        if (newMinCurrentVolume <= 0) {
-            newMinCurrentVolume = 0;
+    public void nextVolume(){
+        if (currentVolume != maxVolume){
+            currentVolume = currentVolume + 1;
+        } else {
+            currentVolume = 0;
         }
-        if (0 < newMinCurrentVolume && newMinCurrentVolume < 10) {
-            newMinCurrentVolume = newMinCurrentVolume - 1;
+    }
+    public void previousVolume(){
+        if (currentVolume != 0){
+            currentVolume = currentVolume-1;
+        } else {
+            currentVolume = maxVolume;
         }
-
-
-        currentVolume = newMinCurrentVolume;
-
     }
-
-    public void setToMaxVolume() {
-        currentVolume = 10;
-    }
-
-    public void setToMinVolume() {
-        currentVolume = 0;
-    }
-
 }
