@@ -1,4 +1,14 @@
 package ru.netology.javaqa.javaqamvn.services;
+
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+
 public  class Radio {
 
     private int currentStation;
@@ -7,14 +17,14 @@ public  class Radio {
     private int maxVolume;
 
 
-    public Radio (){
-        maxStation = 9;
-        maxVolume = 100;
-
-    }
-    public Radio (int stationsCount){
-        maxStation = stationsCount - 1;
-    }
+//    public Radio (){
+//        maxStation = 9;
+//        maxVolume = 100;
+//
+//    }
+//    public Radio (int stationsCount){
+//        maxStation = stationsCount - 1;
+//    }
     //station
     public int getCurrentStation(){
         return currentStation;
